@@ -558,3 +558,144 @@ connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection re
 2026-05-12 14:21:45 | INFO     | app.db.database:<module>:28 - Database connection setup completed successfully.
 2026-05-12 14:21:46 | INFO     | main:startup_event:36 - Initializing application and setting up database tables...
 2026-05-12 14:21:46 | INFO     | main:startup_event:39 - Database tables verified/created successfully.
+2026-05-12 15:01:50 | INFO     | app.db.database:<module>:10 - Connecting to database at sqlite:///./sql_app.db
+2026-05-12 15:01:50 | INFO     | app.db.database:<module>:28 - Database connection setup completed successfully.
+2026-05-12 15:01:52 | INFO     | app.services.matching_service:reconcile:128 - Starting Reconciliation process
+2026-05-12 15:01:52 | INFO     | app.services.matching_service:_run_exact_matching:33 - Starting Exact Matching phase
+2026-05-12 15:01:52 | INFO     | app.services.matching_service:_run_exact_matching:73 - Exact matching completed. Found 1 exact matches.
+2026-05-12 15:01:52 | INFO     | app.services.matching_service:_run_fuzzy_matching:80 - Starting Fuzzy Matching phase
+2026-05-12 15:01:52 | INFO     | app.services.matching_service:_run_fuzzy_matching:122 - Fuzzy matching completed. Found 0 fuzzy matches.
+2026-05-12 15:01:52 | INFO     | app.services.matching_service:reconcile:128 - Starting Reconciliation process
+2026-05-12 15:01:52 | INFO     | app.services.matching_service:_run_exact_matching:33 - Starting Exact Matching phase
+2026-05-12 15:01:52 | INFO     | app.services.matching_service:_run_exact_matching:73 - Exact matching completed. Found 0 exact matches.
+2026-05-12 15:01:52 | INFO     | app.services.matching_service:_run_fuzzy_matching:80 - Starting Fuzzy Matching phase
+2026-05-12 15:01:52 | INFO     | app.services.matching_service:_run_fuzzy_matching:122 - Fuzzy matching completed. Found 1 fuzzy matches.
+2026-05-12 15:01:52 | INFO     | app.services.ingestion_service:ingest_file:80 - Starting ingestion for file: C:\Users\satap\AppData\Local\Temp\pytest-of-satap\pytest-3\test_csv_ingestion0\test_data.csv [Source: internal]
+2026-05-12 15:01:52 | DEBUG    | app.services.ingestion_service:_read_file:20 - Attempting to read file C:\Users\satap\AppData\Local\Temp\pytest-of-satap\pytest-3\test_csv_ingestion0\test_data.csv with extension .csv
+2026-05-12 15:01:52 | DEBUG    | app.services.ingestion_service:ingest_file:84 - Read 1 rows from C:\Users\satap\AppData\Local\Temp\pytest-of-satap\pytest-3\test_csv_ingestion0\test_data.csv
+2026-05-12 15:01:52 | DEBUG    | app.services.ingestion_service:_clean_data:48 - Dropped 0 rows due to missing critical columns
+2026-05-12 15:01:52 | INFO     | app.services.ingestion_service:ingest_file:95 - Successfully ingested 1 records from C:\Users\satap\AppData\Local\Temp\pytest-of-satap\pytest-3\test_csv_ingestion0\test_data.csv
+2026-05-12 15:01:52 | INFO     | app.services.ingestion_service:ingest_file:80 - Starting ingestion for file: C:\Users\satap\AppData\Local\Temp\pytest-of-satap\pytest-3\test_missing_columns0\bad_data.csv [Source: internal]
+2026-05-12 15:01:52 | DEBUG    | app.services.ingestion_service:_read_file:20 - Attempting to read file C:\Users\satap\AppData\Local\Temp\pytest-of-satap\pytest-3\test_missing_columns0\bad_data.csv with extension .csv
+2026-05-12 15:01:52 | DEBUG    | app.services.ingestion_service:ingest_file:84 - Read 1 rows from C:\Users\satap\AppData\Local\Temp\pytest-of-satap\pytest-3\test_missing_columns0\bad_data.csv
+2026-05-12 15:01:52 | ERROR    | app.services.ingestion_service:_validate_columns:39 - Missing required columns: merchant
+2026-05-12 15:03:15 | INFO     | app.db.database:<module>:10 - Connecting to database at sqlite:///./sql_app.db
+2026-05-12 15:03:15 | INFO     | app.db.database:<module>:28 - Database connection setup completed successfully.
+2026-05-12 15:03:16 | INFO     | main:startup_event:37 - Initializing application and setting up database tables...
+2026-05-12 15:03:16 | INFO     | main:startup_event:40 - Database tables verified/created successfully.
+2026-05-12 15:10:30 | INFO     | app.api.upload:upload_files:26 - Received request to upload transaction files
+2026-05-12 15:10:30 | INFO     | app.services.ingestion_service:ingest_file:80 - Starting ingestion for file: uploads/internal_temp_internal_transactions (1).csv [Source: internal]
+2026-05-12 15:10:30 | DEBUG    | app.services.ingestion_service:_read_file:20 - Attempting to read file uploads/internal_temp_internal_transactions (1).csv with extension .csv
+2026-05-12 15:10:30 | DEBUG    | app.services.ingestion_service:ingest_file:84 - Read 5 rows from uploads/internal_temp_internal_transactions (1).csv
+2026-05-12 15:10:30 | DEBUG    | app.services.ingestion_service:_clean_data:48 - Dropped 0 rows due to missing critical columns
+2026-05-12 15:10:30 | INFO     | app.services.ingestion_service:ingest_file:95 - Successfully ingested 5 records from uploads/internal_temp_internal_transactions (1).csv
+2026-05-12 15:10:30 | INFO     | app.services.ingestion_service:ingest_file:80 - Starting ingestion for file: uploads/bank_temp_bank_transactions.xlsx [Source: bank]
+2026-05-12 15:10:30 | DEBUG    | app.services.ingestion_service:_read_file:20 - Attempting to read file uploads/bank_temp_bank_transactions.xlsx with extension .xlsx
+2026-05-12 15:10:31 | DEBUG    | app.services.ingestion_service:ingest_file:84 - Read 5 rows from uploads/bank_temp_bank_transactions.xlsx
+2026-05-12 15:10:31 | DEBUG    | app.services.ingestion_service:_clean_data:48 - Dropped 0 rows due to missing critical columns
+2026-05-12 15:10:31 | INFO     | app.services.ingestion_service:ingest_file:95 - Successfully ingested 5 records from uploads/bank_temp_bank_transactions.xlsx
+2026-05-12 15:10:31 | INFO     | app.api.upload:upload_files:56 - Successfully processed 5 internal and 5 bank records.
+2026-05-12 15:11:04 | INFO     | app.api.reconcile:run_reconciliation:19 - Received request to run reconciliation
+2026-05-12 15:11:04 | ERROR    | app.api.reconcile:run_reconciliation:71 - Reconciliation process failed: (sqlite3.OperationalError) no such column: transactions.updated_at
+[SQL: SELECT transactions.id AS transactions_id, transactions.transaction_id AS transactions_transaction_id, transactions.amount AS transactions_amount, transactions.currency AS transactions_currency, transactions.timestamp AS transactions_timestamp, transactions.status AS transactions_status, transactions.merchant AS transactions_merchant, transactions.source AS transactions_source, transactions.created_at AS transactions_created_at, transactions.updated_at AS transactions_updated_at 
+FROM transactions 
+WHERE transactions.source = ?]
+[parameters: ('internal',)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-05-12 15:12:54 | INFO     | app.db.database:<module>:10 - Connecting to database at sqlite:///./sql_app.db
+2026-05-12 15:12:54 | INFO     | app.db.database:<module>:28 - Database connection setup completed successfully.
+2026-05-12 15:12:55 | INFO     | main:startup_event:37 - Initializing application and setting up database tables...
+2026-05-12 15:12:55 | INFO     | main:startup_event:40 - Database tables verified/created successfully.
+2026-05-12 15:13:18 | INFO     | app.api.upload:upload_files:26 - Received request to upload transaction files
+2026-05-12 15:13:18 | INFO     | app.services.ingestion_service:ingest_file:80 - Starting ingestion for file: uploads/internal_temp_internal_transactions (1).csv [Source: internal]
+2026-05-12 15:13:18 | DEBUG    | app.services.ingestion_service:_read_file:20 - Attempting to read file uploads/internal_temp_internal_transactions (1).csv with extension .csv
+2026-05-12 15:13:18 | DEBUG    | app.services.ingestion_service:ingest_file:84 - Read 5 rows from uploads/internal_temp_internal_transactions (1).csv
+2026-05-12 15:13:18 | DEBUG    | app.services.ingestion_service:_clean_data:48 - Dropped 0 rows due to missing critical columns
+2026-05-12 15:13:18 | INFO     | app.services.ingestion_service:ingest_file:95 - Successfully ingested 5 records from uploads/internal_temp_internal_transactions (1).csv
+2026-05-12 15:13:18 | INFO     | app.services.ingestion_service:ingest_file:80 - Starting ingestion for file: uploads/bank_temp_bank_transactions.xlsx [Source: bank]
+2026-05-12 15:13:18 | DEBUG    | app.services.ingestion_service:_read_file:20 - Attempting to read file uploads/bank_temp_bank_transactions.xlsx with extension .xlsx
+2026-05-12 15:13:19 | DEBUG    | app.services.ingestion_service:ingest_file:84 - Read 5 rows from uploads/bank_temp_bank_transactions.xlsx
+2026-05-12 15:13:19 | DEBUG    | app.services.ingestion_service:_clean_data:48 - Dropped 0 rows due to missing critical columns
+2026-05-12 15:13:19 | INFO     | app.services.ingestion_service:ingest_file:95 - Successfully ingested 5 records from uploads/bank_temp_bank_transactions.xlsx
+2026-05-12 15:13:19 | INFO     | app.api.upload:upload_files:56 - Successfully processed 5 internal and 5 bank records.
+2026-05-12 15:13:28 | INFO     | app.api.reconcile:run_reconciliation:19 - Received request to run reconciliation
+2026-05-12 15:13:28 | ERROR    | app.api.reconcile:run_reconciliation:71 - Reconciliation process failed: (sqlite3.OperationalError) no such column: transactions.updated_at
+[SQL: SELECT transactions.id AS transactions_id, transactions.transaction_id AS transactions_transaction_id, transactions.amount AS transactions_amount, transactions.currency AS transactions_currency, transactions.timestamp AS transactions_timestamp, transactions.status AS transactions_status, transactions.merchant AS transactions_merchant, transactions.source AS transactions_source, transactions.created_at AS transactions_created_at, transactions.updated_at AS transactions_updated_at 
+FROM transactions 
+WHERE transactions.source = ?]
+[parameters: ('internal',)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-05-12 15:14:38 | INFO     | app.db.database:<module>:10 - Connecting to database at sqlite:///./sql_app.db
+2026-05-12 15:14:38 | INFO     | app.db.database:<module>:28 - Database connection setup completed successfully.
+2026-05-12 15:14:39 | INFO     | main:startup_event:37 - Initializing application and setting up database tables...
+2026-05-12 15:14:39 | INFO     | main:startup_event:40 - Database tables verified/created successfully.
+2026-05-12 15:14:57 | INFO     | app.api.upload:upload_files:26 - Received request to upload transaction files
+2026-05-12 15:14:57 | INFO     | app.services.ingestion_service:ingest_file:80 - Starting ingestion for file: uploads/internal_temp_internal_transactions (1).csv [Source: internal]
+2026-05-12 15:14:57 | DEBUG    | app.services.ingestion_service:_read_file:20 - Attempting to read file uploads/internal_temp_internal_transactions (1).csv with extension .csv
+2026-05-12 15:14:57 | DEBUG    | app.services.ingestion_service:ingest_file:84 - Read 5 rows from uploads/internal_temp_internal_transactions (1).csv
+2026-05-12 15:14:57 | DEBUG    | app.services.ingestion_service:_clean_data:48 - Dropped 0 rows due to missing critical columns
+2026-05-12 15:14:57 | INFO     | app.services.ingestion_service:ingest_file:95 - Successfully ingested 5 records from uploads/internal_temp_internal_transactions (1).csv
+2026-05-12 15:14:57 | INFO     | app.services.ingestion_service:ingest_file:80 - Starting ingestion for file: uploads/bank_temp_bank_transactions.xlsx [Source: bank]
+2026-05-12 15:14:57 | DEBUG    | app.services.ingestion_service:_read_file:20 - Attempting to read file uploads/bank_temp_bank_transactions.xlsx with extension .xlsx
+2026-05-12 15:14:57 | DEBUG    | app.services.ingestion_service:ingest_file:84 - Read 5 rows from uploads/bank_temp_bank_transactions.xlsx
+2026-05-12 15:14:57 | DEBUG    | app.services.ingestion_service:_clean_data:48 - Dropped 0 rows due to missing critical columns
+2026-05-12 15:14:57 | INFO     | app.services.ingestion_service:ingest_file:95 - Successfully ingested 5 records from uploads/bank_temp_bank_transactions.xlsx
+2026-05-12 15:14:57 | INFO     | app.api.upload:upload_files:56 - Successfully processed 5 internal and 5 bank records.
+2026-05-12 15:15:03 | INFO     | app.api.reconcile:run_reconciliation:19 - Received request to run reconciliation
+2026-05-12 15:15:03 | INFO     | app.services.matching_service:reconcile:128 - Starting Reconciliation process
+2026-05-12 15:15:03 | INFO     | app.services.matching_service:_run_exact_matching:33 - Starting Exact Matching phase
+2026-05-12 15:15:03 | INFO     | app.services.matching_service:_run_exact_matching:73 - Exact matching completed. Found 3 exact matches.
+2026-05-12 15:15:03 | INFO     | app.services.matching_service:_run_fuzzy_matching:80 - Starting Fuzzy Matching phase
+2026-05-12 15:15:03 | INFO     | app.services.matching_service:_run_fuzzy_matching:122 - Fuzzy matching completed. Found 1 fuzzy matches.
+2026-05-12 15:15:03 | INFO     | app.services.exception_service:detect_exceptions:18 - Starting exception detection
+2026-05-12 15:15:03 | INFO     | app.services.exception_service:detect_exceptions:102 - Detected 2 exceptions
+2026-05-12 15:15:03 | INFO     | app.api.reconcile:run_reconciliation:61 - Reconciliation completed successfully.
+2026-05-12 15:15:31 | INFO     | app.api.export:export_report:19 - Request received to export report
+2026-05-12 15:15:31 | INFO     | app.services.report_service:generate_excel_report:19 - Generating Excel report
+2026-05-12 15:15:31 | INFO     | app.services.report_service:generate_excel_report:101 - Excel report generated successfully
+2026-05-12 15:16:08 | INFO     | app.api.transactions:get_transaction_details:21 - Searching for transaction: TXN1001
+2026-05-12 15:17:22 | INFO     | app.db.database:<module>:10 - Connecting to database at sqlite:///./sql_app.db
+2026-05-12 15:17:22 | INFO     | app.db.database:<module>:28 - Database connection setup completed successfully.
+2026-05-12 15:17:23 | INFO     | app.services.matching_service:reconcile:128 - Starting Reconciliation process
+2026-05-12 15:17:23 | INFO     | app.services.matching_service:_run_exact_matching:33 - Starting Exact Matching phase
+2026-05-12 15:17:23 | INFO     | app.services.matching_service:_run_exact_matching:73 - Exact matching completed. Found 1 exact matches.
+2026-05-12 15:17:23 | INFO     | app.services.matching_service:_run_fuzzy_matching:80 - Starting Fuzzy Matching phase
+2026-05-12 15:17:23 | INFO     | app.services.matching_service:_run_fuzzy_matching:122 - Fuzzy matching completed. Found 0 fuzzy matches.
+2026-05-12 15:17:23 | INFO     | app.services.matching_service:reconcile:128 - Starting Reconciliation process
+2026-05-12 15:17:23 | INFO     | app.services.matching_service:_run_exact_matching:33 - Starting Exact Matching phase
+2026-05-12 15:17:23 | INFO     | app.services.matching_service:_run_exact_matching:73 - Exact matching completed. Found 0 exact matches.
+2026-05-12 15:17:23 | INFO     | app.services.matching_service:_run_fuzzy_matching:80 - Starting Fuzzy Matching phase
+2026-05-12 15:17:23 | INFO     | app.services.matching_service:_run_fuzzy_matching:122 - Fuzzy matching completed. Found 1 fuzzy matches.
+2026-05-12 15:17:23 | INFO     | app.api.transactions:get_transaction_details:21 - Searching for transaction: NON_EXISTENT_TX
+2026-05-12 15:17:23 | WARNING  | app.api.transactions:get_transaction_details:28 - Transaction not found: NON_EXISTENT_TX
+2026-05-12 15:17:23 | INFO     | app.api.upload:upload_files:26 - Received request to upload transaction files
+2026-05-12 15:17:23 | INFO     | app.services.ingestion_service:ingest_file:80 - Starting ingestion for file: uploads/internal_temp_internal.csv [Source: internal]
+2026-05-12 15:17:23 | DEBUG    | app.services.ingestion_service:_read_file:20 - Attempting to read file uploads/internal_temp_internal.csv with extension .csv
+2026-05-12 15:17:23 | DEBUG    | app.services.ingestion_service:ingest_file:84 - Read 10 rows from uploads/internal_temp_internal.csv
+2026-05-12 15:17:23 | DEBUG    | app.services.ingestion_service:_clean_data:48 - Dropped 0 rows due to missing critical columns
+2026-05-12 15:17:23 | INFO     | app.services.ingestion_service:ingest_file:95 - Successfully ingested 10 records from uploads/internal_temp_internal.csv
+2026-05-12 15:17:23 | INFO     | app.services.ingestion_service:ingest_file:80 - Starting ingestion for file: uploads/bank_temp_bank.csv [Source: bank]
+2026-05-12 15:17:23 | DEBUG    | app.services.ingestion_service:_read_file:20 - Attempting to read file uploads/bank_temp_bank.csv with extension .csv
+2026-05-12 15:17:23 | DEBUG    | app.services.ingestion_service:ingest_file:84 - Read 8 rows from uploads/bank_temp_bank.csv
+2026-05-12 15:17:23 | DEBUG    | app.services.ingestion_service:_clean_data:48 - Dropped 0 rows due to missing critical columns
+2026-05-12 15:17:23 | INFO     | app.services.ingestion_service:ingest_file:95 - Successfully ingested 8 records from uploads/bank_temp_bank.csv
+2026-05-12 15:17:23 | INFO     | app.api.upload:upload_files:56 - Successfully processed 10 internal and 8 bank records.
+2026-05-12 15:17:23 | INFO     | app.api.reconcile:run_reconciliation:19 - Received request to run reconciliation
+2026-05-12 15:17:23 | INFO     | app.services.matching_service:reconcile:128 - Starting Reconciliation process
+2026-05-12 15:17:23 | INFO     | app.services.matching_service:_run_exact_matching:33 - Starting Exact Matching phase
+2026-05-12 15:17:23 | INFO     | app.services.matching_service:_run_exact_matching:73 - Exact matching completed. Found 5 exact matches.
+2026-05-12 15:17:23 | INFO     | app.services.matching_service:_run_fuzzy_matching:80 - Starting Fuzzy Matching phase
+2026-05-12 15:17:23 | INFO     | app.services.matching_service:_run_fuzzy_matching:122 - Fuzzy matching completed. Found 1 fuzzy matches.
+2026-05-12 15:17:23 | INFO     | app.services.exception_service:detect_exceptions:18 - Starting exception detection
+2026-05-12 15:17:23 | INFO     | app.services.exception_service:detect_exceptions:102 - Detected 11 exceptions
+2026-05-12 15:17:23 | INFO     | app.api.reconcile:run_reconciliation:61 - Reconciliation completed successfully.
+2026-05-12 15:17:23 | INFO     | app.api.transactions:get_transaction_details:21 - Searching for transaction: TXN-1001
+2026-05-12 15:17:23 | INFO     | app.services.ingestion_service:ingest_file:80 - Starting ingestion for file: C:\Users\satap\AppData\Local\Temp\pytest-of-satap\pytest-4\test_csv_ingestion0\test_data.csv [Source: internal]
+2026-05-12 15:17:23 | DEBUG    | app.services.ingestion_service:_read_file:20 - Attempting to read file C:\Users\satap\AppData\Local\Temp\pytest-of-satap\pytest-4\test_csv_ingestion0\test_data.csv with extension .csv
+2026-05-12 15:17:23 | DEBUG    | app.services.ingestion_service:ingest_file:84 - Read 1 rows from C:\Users\satap\AppData\Local\Temp\pytest-of-satap\pytest-4\test_csv_ingestion0\test_data.csv
+2026-05-12 15:17:23 | DEBUG    | app.services.ingestion_service:_clean_data:48 - Dropped 0 rows due to missing critical columns
+2026-05-12 15:17:23 | INFO     | app.services.ingestion_service:ingest_file:95 - Successfully ingested 1 records from C:\Users\satap\AppData\Local\Temp\pytest-of-satap\pytest-4\test_csv_ingestion0\test_data.csv
+2026-05-12 15:17:23 | INFO     | app.services.ingestion_service:ingest_file:80 - Starting ingestion for file: C:\Users\satap\AppData\Local\Temp\pytest-of-satap\pytest-4\test_missing_columns0\bad_data.csv [Source: internal]
+2026-05-12 15:17:23 | DEBUG    | app.services.ingestion_service:_read_file:20 - Attempting to read file C:\Users\satap\AppData\Local\Temp\pytest-of-satap\pytest-4\test_missing_columns0\bad_data.csv with extension .csv
+2026-05-12 15:17:23 | DEBUG    | app.services.ingestion_service:ingest_file:84 - Read 1 rows from C:\Users\satap\AppData\Local\Temp\pytest-of-satap\pytest-4\test_missing_columns0\bad_data.csv
+2026-05-12 15:17:23 | ERROR    | app.services.ingestion_service:_validate_columns:39 - Missing required columns: merchant

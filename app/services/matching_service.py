@@ -65,6 +65,7 @@ class MatchingService:
                     'internal_tx_id': tx_id,
                     'bank_tx_id': tx_id,
                     'status': 'Exact Match',
+                    'match_type': 'Exact ID, Exact Amount, Exact Time',
                     'match_score': 100.0
                 })
                 exact_count += 1
@@ -113,6 +114,7 @@ class MatchingService:
                     'internal_tx_id': int_row['transaction_id'],
                     'bank_tx_id': self.bank_df.at[best_match_idx, 'transaction_id'],
                     'status': 'Fuzzy Match',
+                    'match_type': 'Fuzzy ID, Amount & Time within tolerance',
                     'match_score': round(best_score, 2)
                 })
                 fuzzy_count += 1

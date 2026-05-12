@@ -23,14 +23,18 @@ class ExceptionService:
             exceptions.append({
                 "transaction_id": record["transaction_id"],
                 "exception_type": "Missing Transaction",
-                "details": f"Transaction present in internal system but missing in bank statement. Amount: {record['amount']}"
+                "severity": "HIGH",
+                "details": f"Transaction present in internal system but missing in bank statement. Amount: {record['amount']}",
+                "recommendation": "Investigate missing bank data with banking partner or verify internal validity."
             })
             
         for record in unmatched_bank:
             exceptions.append({
                 "transaction_id": record["transaction_id"],
                 "exception_type": "Missing Transaction",
-                "details": f"Transaction present in bank statement but missing in internal system. Amount: {record['amount']}"
+                "severity": "HIGH",
+                "details": f"Transaction present in bank statement but missing in internal system. Amount: {record['amount']}",
+                "recommendation": "Identify why this transaction was not recorded in the internal ledger."
             })
 
         # 2. Duplicate Transaction
@@ -39,7 +43,9 @@ class ExceptionService:
             exceptions.append({
                 "transaction_id": row['transaction_id'],
                 "exception_type": "Duplicate Transaction",
-                "details": f"Duplicate transaction found in internal records. Amount: {row['amount']}"
+                "severity": "HIGH",
+                "details": f"Duplicate transaction found in internal records. Amount: {row['amount']}",
+                "recommendation": "Review and prune duplicate internal records to prevent double-counting."
             })
 
         # 3. Amount Mismatch & Delayed Settlement (for fuzzy matches mostly)
@@ -53,7 +59,9 @@ class ExceptionService:
                     exceptions.append({
                         "transaction_id": match['internal_tx_id'],
                         "exception_type": "Amount Mismatch",
-                        "details": f"Internal amount: {int_tx['amount']}, Bank amount: {bnk_tx['amount']}"
+                        "severity": "MEDIUM",
+                        "details": f"Internal amount: {int_tx['amount']}, Bank amount: {bnk_tx['amount']}",
+                        "recommendation": "Reconcile the exact amount difference. Potential partial refund or fee deduction."
                     })
                 
                 # Check Delayed Settlement
@@ -62,7 +70,9 @@ class ExceptionService:
                     exceptions.append({
                         "transaction_id": match['internal_tx_id'],
                         "exception_type": "Delayed Settlement",
-                        "details": f"Settlement delayed by {time_diff_mins:.2f} minutes"
+                        "severity": "LOW",
+                        "details": f"Settlement delayed by {time_diff_mins:.2f} minutes",
+                        "recommendation": "Ensure payment gateway processing delays are within expected SLAs."
                     })
                     
         # 4. Refund Mismatch (Check status differences)
@@ -76,13 +86,17 @@ class ExceptionService:
                 exceptions.append({
                     "transaction_id": match['internal_tx_id'],
                     "exception_type": "Refund Mismatch",
-                    "details": f"Internal status: {int_tx['status']}, Bank status: {bnk_tx['status']}"
+                    "severity": "HIGH",
+                    "details": f"Internal status: {int_tx['status']}, Bank status: {bnk_tx['status']}",
+                    "recommendation": "Bank has not reflected the refund. Check gateway settlement status."
                 })
             elif 'refund' in str(bnk_tx['status']).lower() and 'refund' not in str(int_tx['status']).lower():
                 exceptions.append({
                     "transaction_id": match['internal_tx_id'],
                     "exception_type": "Refund Mismatch",
-                    "details": f"Internal status: {int_tx['status']}, Bank status: {bnk_tx['status']}"
+                    "severity": "HIGH",
+                    "details": f"Internal status: {int_tx['status']}, Bank status: {bnk_tx['status']}",
+                    "recommendation": "Internal system missing refund status. Update internal ledger."
                 })
 
         logger.info(f"Detected {len(exceptions)} exceptions")

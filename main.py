@@ -5,7 +5,7 @@ import uvicorn
 from app.core.config import settings
 from app.core.logger import logger
 from app.db.database import Base, engine
-from app.api import upload, reconcile, results, exceptions, export, metrics
+from app.api import upload, reconcile, results, exceptions, export, metrics, transactions
 
 # Initialize FastAPI App
 app = FastAPI(
@@ -30,6 +30,7 @@ app.include_router(results.router, prefix=settings.API_V1_STR, tags=["Results"])
 app.include_router(exceptions.router, prefix=settings.API_V1_STR, tags=["Exceptions"])
 app.include_router(export.router, prefix=settings.API_V1_STR, tags=["Export"])
 app.include_router(metrics.router, prefix=settings.API_V1_STR, tags=["Metrics"])
+app.include_router(transactions.router, prefix=settings.API_V1_STR, tags=["Transactions"])
 
 @app.on_event("startup")
 async def startup_event():

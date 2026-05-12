@@ -14,7 +14,7 @@ HEALTH_URL = "http://127.0.0.1:8000/health"
 
 # Page Configuration
 st.set_page_config(
-    page_title="Payment Reconciliation Platform",
+    page_title="FinRecon Pro",
     page_icon="🏦",
     layout="wide",
     initial_sidebar_state="expanded"
@@ -24,39 +24,48 @@ st.set_page_config(
 st.markdown("""
 <style>
     .kpi-card {
-        background-color: #1e1e1e;
-        border-radius: 10px;
-        padding: 20px;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-        border: 1px solid #333;
-        margin-bottom: 20px;
+        background-color: #1a1a1a;
+        border-radius: 12px;
+        padding: 24px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+        border: 1px solid #2d2d2d;
+        margin-bottom: 24px;
+        transition: transform 0.2s;
+    }
+    .kpi-card:hover {
+        transform: translateY(-5px);
+        border-color: #4CAF50;
     }
     .kpi-title {
-        color: #888;
+        color: #a0a0a0;
         font-size: 14px;
         font-weight: 600;
         text-transform: uppercase;
-        margin-bottom: 10px;
+        letter-spacing: 1px;
+        margin-bottom: 12px;
     }
     .kpi-value {
         color: #ffffff;
-        font-size: 28px;
+        font-size: 32px;
         font-weight: 700;
     }
     .status-badge {
-        padding: 5px 10px;
-        border-radius: 15px;
-        font-size: 12px;
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 13px;
         font-weight: bold;
+        display: inline-block;
     }
-    .status-healthy { background-color: #28a745; color: white; }
-    .status-error { background-color: #dc3545; color: white; }
+    .status-healthy { background-color: rgba(40, 167, 69, 0.2); color: #4CAF50; border: 1px solid #4CAF50; }
+    .status-error { background-color: rgba(220, 53, 69, 0.2); color: #ff5252; border: 1px solid #ff5252; }
+    .status-warning { background-color: rgba(255, 193, 7, 0.2); color: #ffc107; border: 1px solid #ffc107; }
     
     /* Clean up default Streamlit elements */
     .stButton>button {
         width: 100%;
-        border-radius: 5px;
+        border-radius: 8px;
         font-weight: 600;
+        padding: 0.5rem 1rem;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -64,82 +73,36 @@ st.markdown("""
 # ==============================================================================
 # API HELPER FUNCTIONS
 # ==============================================================================
+@st.cache_data(ttl=5)
 def check_health() -> bool:
-    """Check if the backend API is reachable."""
     try:
         response = requests.get(HEALTH_URL, timeout=5)
         return response.status_code == 200
-    except requests.RequestException:
+    except:
         return False
 
-def upload_files(internal_file, bank_file) -> Optional[Dict[str, Any]]:
-    """Upload transaction files to the backend."""
+def api_call(method: str, endpoint: str, **kwargs) -> Optional[Any]:
+    """Generic API caller with error handling."""
     try:
-        files = {
-            'internal_file': (internal_file.name, internal_file, 'text/csv'),
-            'bank_file': (bank_file.name, bank_file, 'text/csv')
-        }
-        response = requests.post(f"{API_BASE_URL}/upload", files=files)
+        url = f"{API_BASE_URL}{endpoint}"
+        response = requests.request(method, url, **kwargs)
         response.raise_for_status()
-        return response.json()
-    except requests.RequestException as e:
-        st.error(f"Upload failed: {e.response.json().get('detail') if hasattr(e, 'response') and e.response else str(e)}")
-        return None
-
-def run_reconciliation() -> Optional[Dict[str, Any]]:
-    """Trigger the reconciliation engine."""
-    try:
-        response = requests.post(f"{API_BASE_URL}/reconcile")
-        response.raise_for_status()
-        return response.json()
-    except requests.RequestException as e:
-        st.error(f"Reconciliation failed: {e.response.json().get('detail') if hasattr(e, 'response') and e.response else str(e)}")
-        return None
-
-def fetch_metrics() -> Optional[Dict[str, Any]]:
-    """Fetch dashboard metrics."""
-    try:
-        response = requests.get(f"{API_BASE_URL}/metrics")
-        response.raise_for_status()
-        return response.json()
-    except requests.RequestException:
-        return None
-
-def fetch_results() -> List[Dict[str, Any]]:
-    """Fetch all reconciliation results."""
-    try:
-        response = requests.get(f"{API_BASE_URL}/results?limit=1000")
-        response.raise_for_status()
-        return response.json()
-    except requests.RequestException as e:
-        st.error(f"Failed to fetch results: {str(e)}")
-        return []
-
-def fetch_exceptions() -> List[Dict[str, Any]]:
-    """Fetch all exceptions."""
-    try:
-        response = requests.get(f"{API_BASE_URL}/exceptions?limit=1000")
-        response.raise_for_status()
-        return response.json()
-    except requests.RequestException as e:
-        st.error(f"Failed to fetch exceptions: {str(e)}")
-        return []
-
-def get_export_report():
-    """Get the export report as bytes."""
-    try:
-        response = requests.get(f"{API_BASE_URL}/export")
-        response.raise_for_status()
+        
+        if response.headers.get('content-type') == 'application/json':
+            return response.json()
         return response.content
-    except requests.RequestException as e:
-        st.error(f"Failed to generate report: {str(e)}")
+    except requests.exceptions.HTTPError as e:
+        detail = e.response.json().get('detail', str(e)) if e.response else str(e)
+        st.error(f"API Error: {detail}")
+        return None
+    except Exception as e:
+        st.error(f"Connection Error: {str(e)}")
         return None
 
 # ==============================================================================
 # UI COMPONENTS
 # ==============================================================================
 def render_kpi_card(title: str, value: str, prefix: str = ""):
-    """Render a modern KPI card."""
     st.markdown(f"""
         <div class="kpi-card">
             <div class="kpi-title">{title}</div>
@@ -147,308 +110,194 @@ def render_kpi_card(title: str, value: str, prefix: str = ""):
         </div>
     """, unsafe_allow_html=True)
 
+def render_badge(text: str, level: str = "healthy"):
+    st.markdown(f'<span class="status-badge status-{level}">{text}</span>', unsafe_allow_html=True)
+
 # ==============================================================================
 # PAGE SECTIONS
 # ==============================================================================
 
-def page_system_health():
-    """System Health and Connection Status Page"""
-    st.title("🖥️ System Health")
-    st.markdown("Monitor backend API status and connectivity.")
-    
-    with st.container():
-        is_healthy = check_health()
-        if is_healthy:
-            st.success("Backend API is running and connected.")
-            st.markdown('<span class="status-badge status-healthy">API: ONLINE</span>', unsafe_allow_html=True)
-            
-            # Show a dummy latency metric for professional feel
-            col1, col2 = st.columns(2)
-            with col1:
-                render_kpi_card("API Status", "Healthy")
-            with col2:
-                render_kpi_card("Response Time", "42 ms")
-        else:
-            st.error("Cannot connect to backend API. Please ensure FastAPI is running on http://127.0.0.1:8000")
-            st.markdown('<span class="status-badge status-error">API: OFFLINE</span>', unsafe_allow_html=True)
-
-def page_upload():
-    """File Upload Interface"""
-    st.title("📤 Upload Transactions")
-    st.markdown("Upload internal ledger and bank statement files for reconciliation.")
-    
-    with st.container():
-        col1, col2 = st.columns(2)
-        
-        with col1:
-            st.subheader("Internal Transactions")
-            internal_file = st.file_uploader("Upload Internal CSV/Excel", type=['csv', 'xlsx'], key="internal")
-            
-        with col2:
-            st.subheader("Bank Statement")
-            bank_file = st.file_uploader("Upload Bank CSV/Excel", type=['csv', 'xlsx'], key="bank")
-            
-    st.markdown("---")
-    
-    if st.button("🚀 Upload & Process Files", type="primary", use_container_width=True):
-        if not internal_file or not bank_file:
-            st.warning("⚠️ Please upload both Internal and Bank transaction files before proceeding.")
-        else:
-            with st.spinner("Processing files and validating schema..."):
-                result = upload_files(internal_file, bank_file)
-                if result:
-                    st.success(f"✅ {result['message']}")
-                    
-                    # Show upload stats
-                    col1, col2 = st.columns(2)
-                    with col1:
-                        render_kpi_card("Internal Records Ingested", f"{result['internal_records']:,}")
-                    with col2:
-                        render_kpi_card("Bank Records Ingested", f"{result['bank_records']:,}")
-                    
-                    st.info("Files are successfully ingested. Navigate to the Reconciliation Dashboard to run the matching engine.")
-
 def page_dashboard():
-    """Main Reconciliation Dashboard"""
-    st.title("📊 Reconciliation Dashboard")
+    st.title("📊 Executive Dashboard")
     
-    # 1. Action Bar
-    col_btn, col_empty = st.columns([1, 3])
-    with col_btn:
-        if st.button("⚙️ Run Matching Engine", type="primary"):
-            with st.spinner("Running exact and fuzzy matching algorithms..."):
-                res = run_reconciliation()
-                if res:
-                    st.success("Matching completed successfully!")
-                    time.sleep(1) # Small delay for UX
-                    st.rerun() # Refresh to show new metrics
-                    
-    st.markdown("---")
-    
-    # Fetch Metrics
-    metrics = fetch_metrics()
+    col1, col2 = st.columns([1, 4])
+    with col1:
+        if st.button("🔄 Refresh Data", type="primary"):
+            st.rerun()
+            
+    metrics = api_call("GET", "/metrics")
     
     if not metrics or metrics.get('total_internal', 0) == 0:
-        st.info("No data available. Please upload files and run the matching engine first.")
+        st.warning("No reconciliation data available. Please upload files and run the engine.")
         return
 
-    # 2. KPI Cards
-    st.subheader("Key Performance Indicators")
-    col1, col2, col3, col4, col5 = st.columns(5)
-    
-    with col1:
-        render_kpi_card("Total Internal TXNs", f"{metrics['total_internal']:,}")
-    with col2:
-        render_kpi_card("Exact Matches", f"{metrics['exact_matches']:,}")
-    with col3:
-        render_kpi_card("Fuzzy Matches", f"{metrics['fuzzy_matches']:,}")
-    with col4:
-        match_rate = metrics['match_rate']
-        render_kpi_card("Match Rate", f"{match_rate}%")
-    with col5:
-        render_kpi_card("Unmatched Amount", f"{metrics['unmatched_amount']:,.2f}", prefix="$")
+    # KPI Row 1
+    c1, c2, c3, c4 = st.columns(4)
+    with c1: render_kpi_card("Total Transactions", f"{metrics['total_internal']:,}")
+    with c2: render_kpi_card("Match Rate", f"{metrics['match_rate']}%")
+    with c3: render_kpi_card("Total Exceptions", f"{metrics.get('total_exceptions', 0):,}")
+    with c4: render_kpi_card("Unmatched Volume", f"{metrics['unmatched_amount']:,.2f}", "$")
 
-    # 3. Charts Area
     st.markdown("---")
-    st.subheader("Analytics & Insights")
     
-    chart_col1, chart_col2 = st.columns(2)
-    
-    with chart_col1:
-        # Donut Chart for Match Status
-        unmatched_count = metrics['total_internal'] - metrics['total_matched']
-        labels = ['Exact Matches', 'Fuzzy Matches', 'Unmatched']
-        values = [metrics['exact_matches'], metrics['fuzzy_matches'], unmatched_count]
-        
-        fig_donut = go.Figure(data=[go.Pie(
-            labels=labels, 
-            values=values, 
-            hole=.4,
-            marker_colors=['#28a745', '#ffc107', '#dc3545']
+    # Charts Row
+    c1, c2 = st.columns(2)
+    with c1:
+        unmatched = metrics['total_internal'] - metrics['total_matched']
+        fig = go.Figure(data=[go.Pie(
+            labels=['Exact', 'Fuzzy', 'Unmatched'], 
+            values=[metrics['exact_matches'], metrics['fuzzy_matches'], unmatched],
+            hole=.5,
+            marker_colors=['#4CAF50', '#FFC107', '#ff5252']
         )])
-        fig_donut.update_layout(
-            title_text="Matching Distribution",
-            paper_bgcolor='rgba(0,0,0,0)',
-            plot_bgcolor='rgba(0,0,0,0)',
-            font=dict(color='white')
-        )
-        st.plotly_chart(fig_donut, use_container_width=True)
-        
-    with chart_col2:
-        # Bar chart for Exception Types
-        exc_dict = metrics.get('exceptions_by_type', {})
-        if exc_dict:
-            exc_df = pd.DataFrame(list(exc_dict.items()), columns=['Exception Type', 'Count'])
-            fig_bar = px.bar(
-                exc_df, 
-                x='Exception Type', 
-                y='Count', 
-                color='Exception Type',
-                text='Count',
-                title="Exceptions Breakdown"
-            )
-            fig_bar.update_layout(
-                paper_bgcolor='rgba(0,0,0,0)',
-                plot_bgcolor='rgba(0,0,0,0)',
-                font=dict(color='white'),
-                showlegend=False
-            )
-            st.plotly_chart(fig_bar, use_container_width=True)
-        else:
-            st.info("No exceptions detected.")
+        fig.update_layout(title="Reconciliation Distribution", paper_bgcolor='rgba(0,0,0,0)', font_color='white')
+        st.plotly_chart(fig, use_container_width=True)
 
-    # 4. Results Data Table
-    st.markdown("---")
-    st.subheader("Detailed Results")
+    with c2:
+        exc = metrics.get('exceptions_by_type', {})
+        if exc:
+            df = pd.DataFrame(list(exc.items()), columns=['Type', 'Count'])
+            fig = px.bar(df, x='Type', y='Count', title="Exceptions Breakdown", color='Type')
+            fig.update_layout(paper_bgcolor='rgba(0,0,0,0)', font_color='white', showlegend=False)
+            st.plotly_chart(fig, use_container_width=True)
+        else:
+            st.info("No exceptions detected! Great job.")
+
+def page_upload_reconcile():
+    st.title("⚙️ Engine Operations")
     
-    results = fetch_results()
-    if results:
-        df_results = pd.DataFrame(results)
-        # Format the table
-        if not df_results.empty:
-            df_display = df_results[['internal_tx_id', 'bank_tx_id', 'status', 'match_score', 'created_at']]
-            df_display.columns = ['Internal ID', 'Bank ID', 'Status', 'Score', 'Processed At']
+    st.subheader("1. Ingest Data")
+    c1, c2 = st.columns(2)
+    with c1: int_file = st.file_uploader("Internal Ledger", type=['csv', 'xlsx', 'xls'])
+    with c2: bnk_file = st.file_uploader("Bank Statement", type=['csv', 'xlsx', 'xls'])
+    
+    if st.button("Upload & Parse Files", type="primary"):
+        if int_file and bnk_file:
+            with st.spinner("Parsing and validating files..."):
+                files = {
+                    'internal_file': (int_file.name, int_file, 'application/octet-stream'),
+                    'bank_file': (bnk_file.name, bnk_file, 'application/octet-stream')
+                }
+                res = api_call("POST", "/upload", files=files)
+                if res:
+                    st.success(f"Successfully loaded {res['internal_records']} internal and {res['bank_records']} bank records.")
+        else:
+            st.warning("Please upload both files.")
             
-            with st.expander("View Full Reconciliation Table", expanded=True):
-                # Search filter
-                search = st.text_input("🔍 Search by Transaction ID")
-                if search:
-                    mask = df_display.astype(str).apply(lambda x: x.str.contains(search, case=False)).any(axis=1)
-                    df_display = df_display[mask]
+    st.markdown("---")
+    st.subheader("2. Run Reconciliation")
+    if st.button("🚀 Execute Matching Algorithms"):
+        with st.spinner("Running exact and fuzzy heuristics..."):
+            res = api_call("POST", "/reconcile")
+            if res:
+                st.success("Reconciliation completed!")
+                time.sleep(1)
+                st.session_state.current_page = "📊 Dashboard"
+                st.rerun()
+
+def page_search():
+    st.title("🔍 Global Transaction Search")
+    
+    tx_id = st.text_input("Enter Transaction ID to trace through the entire platform:")
+    
+    if st.button("Search", type="primary") and tx_id:
+        with st.spinner("Searching database..."):
+            res = api_call("GET", f"/transactions/{tx_id}")
+            if res:
+                st.success("Transaction Found!")
                 
-                st.dataframe(
-                    df_display, 
-                    use_container_width=True, 
-                    hide_index=True,
-                    height=400
-                )
-    else:
-        st.info("No detailed results available.")
+                # Core Info
+                st.subheader("Ledger Records")
+                st.dataframe(pd.DataFrame(res['records']), use_container_width=True)
+                
+                # Recon Status
+                c1, c2 = st.columns(2)
+                with c1:
+                    st.subheader("Reconciliation Status")
+                    if res.get('reconciliation'):
+                        r = res['reconciliation']
+                        st.json(r)
+                    else:
+                        st.warning("Unmatched / Not processed")
+                        
+                with c2:
+                    st.subheader("Detected Exceptions")
+                    if res.get('exceptions'):
+                        st.error(f"Found {len(res['exceptions'])} exceptions!")
+                        for exc in res['exceptions']:
+                            st.markdown(f"**{exc['severity']}**: {exc['type']}")
+                            st.write(exc['details'])
+                            st.info(f"💡 {exc['recommendation']}")
+                    else:
+                        st.success("No exceptions linked to this transaction.")
 
 def page_exceptions():
-    """Exceptions Viewer"""
-    st.title("⚠️ Exceptions Viewer")
-    st.markdown("Review and investigate discrepancies found during reconciliation.")
+    st.title("⚠️ Exception Command Center")
     
-    exceptions = fetch_exceptions()
-    
-    if not exceptions:
-        st.info("No exceptions found or matching has not been run yet.")
-        return
-        
-    df_exc = pd.DataFrame(exceptions)
-    
-    if df_exc.empty:
+    exc = api_call("GET", "/exceptions?limit=1000")
+    if not exc:
         st.info("No exceptions found.")
         return
         
-    # Formatting
-    df_display = df_exc[['transaction_id', 'exception_type', 'details', 'created_at']]
-    df_display.columns = ['Transaction ID', 'Type', 'Details', 'Detected At']
+    df = pd.DataFrame(exc)
     
-    # Exception Metrics
-    type_counts = df_display['Type'].value_counts()
-    
-    st.subheader("Exception Summary")
-    cols = st.columns(len(type_counts))
-    for i, (type_name, count) in enumerate(type_counts.items()):
-        with cols[i]:
-            render_kpi_card(type_name, str(count))
-            
-    st.markdown("---")
-    st.subheader("Exception Registry")
-    
-    # Interactive Table with filtering
-    col1, col2 = st.columns(2)
-    with col1:
-        filter_type = st.multiselect("Filter by Type", options=df_display['Type'].unique())
-    with col2:
-        search_tx = st.text_input("Search Transaction ID")
+    # Filters
+    c1, c2 = st.columns(2)
+    with c1:
+        sev_filter = st.multiselect("Filter by Severity", options=["HIGH", "MEDIUM", "LOW"])
+    with c2:
+        type_filter = st.multiselect("Filter by Type", options=df['exception_type'].unique())
         
-    # Apply filters
-    filtered_df = df_display.copy()
-    if filter_type:
-        filtered_df = filtered_df[filtered_df['Type'].isin(filter_type)]
-    if search_tx:
-        filtered_df = filtered_df[filtered_df['Transaction ID'].str.contains(search_tx, case=False, na=False)]
-        
-    st.dataframe(
-        filtered_df,
-        use_container_width=True,
-        hide_index=True,
-        height=500
-    )
+    if sev_filter: df = df[df['severity'].isin(sev_filter)]
+    if type_filter: df = df[df['exception_type'].isin(type_filter)]
     
-    # CSV Download
-    csv = filtered_df.to_csv(index=False)
-    st.download_button(
-        label="📥 Download Exceptions CSV",
-        data=csv,
-        file_name="exceptions_filtered.csv",
-        mime="text/csv",
-    )
+    st.dataframe(df, use_container_width=True, hide_index=True)
 
 def page_export():
-    """Export Reports"""
-    st.title("💾 Export Reports")
-    st.markdown("Download comprehensive reconciliation reports containing all matches, exceptions, and unmatched data.")
+    st.title("💾 Export & Compliance")
+    st.markdown("Generate secure, multi-sheet Excel reports containing full reconciliation trails.")
     
-    st.markdown("""
-    ### Report Contents
-    The generated Excel report will contain multiple sheets:
-    - **Summary**: High-level KPI metrics
-    - **Matched**: Exact and fuzzy matched transactions
-    - **Unmatched**: Leftover internal and bank transactions
-    - **Exceptions**: Full registry of business exceptions detected
-    """)
-    
-    st.markdown("---")
-    
-    if st.button("📄 Generate Excel Report", type="primary"):
-        with st.spinner("Compiling full report..."):
-            report_bytes = get_export_report()
-            if report_bytes:
-                st.success("Report generated successfully!")
+    if st.button("Generate Complete Report", type="primary"):
+        with st.spinner("Compiling sheets and formatting data..."):
+            content = api_call("GET", "/export")
+            if content:
+                st.success("Ready for download!")
                 st.download_button(
-                    label="⬇️ Click here to Download .xlsx",
-                    data=report_bytes,
-                    file_name="Payment_Reconciliation_Report.xlsx",
-                    mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                    label="⬇️ Download .xlsx",
+                    data=content,
+                    file_name=f"Recon_Report_{int(time.time())}.xlsx",
+                    mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                    use_container_width=True
                 )
 
 # ==============================================================================
 # MAIN ROUTER
 # ==============================================================================
 def main():
-    # Sidebar Navigation
-    st.sidebar.title("🏦 FinRecon Platform")
+    st.sidebar.title("🏦 FinRecon Pro")
+    
+    if check_health():
+        st.sidebar.markdown('<span class="status-badge status-healthy">🟢 System Online</span>', unsafe_allow_html=True)
+    else:
+        st.sidebar.markdown('<span class="status-badge status-error">🔴 System Offline</span>', unsafe_allow_html=True)
+        
     st.sidebar.markdown("---")
     
     pages = {
         "📊 Dashboard": page_dashboard,
-        "📤 Upload": page_upload,
+        "⚙️ Engine Ops": page_upload_reconcile,
+        "🔍 Search": page_search,
         "⚠️ Exceptions": page_exceptions,
-        "💾 Export": page_export,
-        "🖥️ Health": page_system_health
+        "💾 Export": page_export
     }
     
-    # Navigation state
     if "current_page" not in st.session_state:
         st.session_state.current_page = "📊 Dashboard"
         
-    selected_page = st.sidebar.radio(
-        "Navigation", 
-        list(pages.keys()), 
-        index=list(pages.keys()).index(st.session_state.current_page)
-    )
+    selected = st.sidebar.radio("Navigation", list(pages.keys()), index=list(pages.keys()).index(st.session_state.current_page))
+    st.session_state.current_page = selected
     
-    st.session_state.current_page = selected_page
-    
-    st.sidebar.markdown("---")
-    st.sidebar.info("Payment Reconciliation Platform v1.0\n\nEnsure FastAPI backend is running.")
-
-    # Render selected page
-    pages[selected_page]()
+    pages[selected]()
 
 if __name__ == "__main__":
     main()

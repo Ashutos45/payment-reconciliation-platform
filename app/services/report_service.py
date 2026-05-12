@@ -58,11 +58,45 @@ class ReportService:
             else:
                 pd.DataFrame({"Message": ["No exceptions detected"]}).to_excel(writer, sheet_name='Exceptions', index=False)
                 
-            # Auto-adjust column widths
+            # Formatting
+            workbook = writer.book
+            header_format = workbook.add_format({
+                'bold': True,
+                'text_wrap': False,
+                'valign': 'top',
+                'fg_color': '#4F81BD',
+                'font_color': 'white',
+                'border': 1
+            })
+            
+            # Auto-adjust column widths and apply header format
             for sheet_name in writer.sheets:
                 worksheet = writer.sheets[sheet_name]
-                # Default column width
-                worksheet.set_column('A:Z', 20)
+                
+                # We need to know the dataframe to adjust widths
+                if sheet_name == 'Summary':
+                    df = metrics_df
+                elif sheet_name == 'Matched' and matches:
+                    df = matches_df
+                elif sheet_name == 'Unmatched' and unmatched_all:
+                    df = unmatched_df
+                elif sheet_name == 'Exceptions' and exceptions:
+                    df = exceptions_df
+                else:
+                    worksheet.set_column('A:Z', 20)
+                    continue
+                    
+                # Write headers with format
+                for col_num, value in enumerate(df.columns.values):
+                    worksheet.write(0, col_num, value, header_format)
+                
+                # Adjust column widths based on content
+                for i, col in enumerate(df.columns):
+                    column_len = max(
+                        df[col].astype(str).map(len).max(),
+                        len(str(col))
+                    ) + 2
+                    worksheet.set_column(i, i, min(column_len, 50)) # Cap at 50 to avoid massive columns
                 
         logger.info("Excel report generated successfully")
         return output.getvalue()
