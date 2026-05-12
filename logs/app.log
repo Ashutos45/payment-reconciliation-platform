@@ -1,0 +1,560 @@
+2026-05-12 13:32:17 | INFO     | app.db.database:<module>:10 - Connecting to database at postgresql://user:password@localhost/payment_reconciliation
+2026-05-12 13:32:17 | INFO     | app.db.database:<module>:28 - Database connection setup completed successfully.
+2026-05-12 13:32:24 | INFO     | main:startup_event:36 - Initializing application and setting up database tables...
+2026-05-12 13:32:28 | ERROR    | main:startup_event:41 - Error creating database tables: (psycopg2.OperationalError) connection to server at "localhost" (::1), port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-05-12 13:55:58 | INFO     | app.db.database:<module>:10 - Connecting to database at postgresql://user:password@localhost/payment_reconciliation
+2026-05-12 13:55:58 | INFO     | app.db.database:<module>:28 - Database connection setup completed successfully.
+2026-05-12 13:55:59 | INFO     | app.services.matching_service:reconcile:126 - Starting Reconciliation process
+2026-05-12 13:55:59 | INFO     | app.services.matching_service:_run_exact_matching:33 - Starting Exact Matching phase
+2026-05-12 13:55:59 | INFO     | app.services.matching_service:_run_exact_matching:72 - Exact matching completed. Found 1 exact matches.
+2026-05-12 13:55:59 | INFO     | app.services.matching_service:_run_fuzzy_matching:79 - Starting Fuzzy Matching phase
+2026-05-12 13:55:59 | INFO     | app.services.matching_service:_run_fuzzy_matching:120 - Fuzzy matching completed. Found 0 fuzzy matches.
+2026-05-12 13:55:59 | INFO     | app.services.matching_service:reconcile:126 - Starting Reconciliation process
+2026-05-12 13:55:59 | INFO     | app.services.matching_service:_run_exact_matching:33 - Starting Exact Matching phase
+2026-05-12 13:55:59 | INFO     | app.services.matching_service:_run_exact_matching:72 - Exact matching completed. Found 0 exact matches.
+2026-05-12 13:55:59 | INFO     | app.services.matching_service:_run_fuzzy_matching:79 - Starting Fuzzy Matching phase
+2026-05-12 13:55:59 | INFO     | app.services.matching_service:_run_fuzzy_matching:120 - Fuzzy matching completed. Found 0 fuzzy matches.
+2026-05-12 13:55:59 | INFO     | app.services.ingestion_service:ingest_file:72 - Starting ingestion for file: C:\Users\satap\AppData\Local\Temp\pytest-of-satap\pytest-0\test_csv_ingestion0\test_data.csv [Source: internal]
+2026-05-12 13:55:59 | DEBUG    | app.services.ingestion_service:ingest_file:76 - Read 1 rows from C:\Users\satap\AppData\Local\Temp\pytest-of-satap\pytest-0\test_csv_ingestion0\test_data.csv
+2026-05-12 13:55:59 | INFO     | app.services.ingestion_service:ingest_file:87 - Successfully ingested 1 records from C:\Users\satap\AppData\Local\Temp\pytest-of-satap\pytest-0\test_csv_ingestion0\test_data.csv
+2026-05-12 13:55:59 | INFO     | app.services.ingestion_service:ingest_file:72 - Starting ingestion for file: C:\Users\satap\AppData\Local\Temp\pytest-of-satap\pytest-0\test_missing_columns0\bad_data.csv [Source: internal]
+2026-05-12 13:55:59 | DEBUG    | app.services.ingestion_service:ingest_file:76 - Read 1 rows from C:\Users\satap\AppData\Local\Temp\pytest-of-satap\pytest-0\test_missing_columns0\bad_data.csv
+2026-05-12 13:55:59 | ERROR    | app.services.ingestion_service:_validate_columns:37 - Missing required columns: merchant
+2026-05-12 13:57:33 | INFO     | app.db.database:<module>:10 - Connecting to database at postgresql://user:password@localhost/payment_reconciliation
+2026-05-12 13:57:33 | INFO     | app.db.database:<module>:28 - Database connection setup completed successfully.
+2026-05-12 13:57:34 | INFO     | app.services.matching_service:reconcile:126 - Starting Reconciliation process
+2026-05-12 13:57:34 | INFO     | app.services.matching_service:_run_exact_matching:33 - Starting Exact Matching phase
+2026-05-12 13:57:34 | INFO     | app.services.matching_service:_run_exact_matching:72 - Exact matching completed. Found 1 exact matches.
+2026-05-12 13:57:34 | INFO     | app.services.matching_service:_run_fuzzy_matching:79 - Starting Fuzzy Matching phase
+2026-05-12 13:57:34 | INFO     | app.services.matching_service:_run_fuzzy_matching:120 - Fuzzy matching completed. Found 0 fuzzy matches.
+2026-05-12 13:57:34 | INFO     | app.services.matching_service:reconcile:126 - Starting Reconciliation process
+2026-05-12 13:57:34 | INFO     | app.services.matching_service:_run_exact_matching:33 - Starting Exact Matching phase
+2026-05-12 13:57:34 | INFO     | app.services.matching_service:_run_exact_matching:72 - Exact matching completed. Found 0 exact matches.
+2026-05-12 13:57:34 | INFO     | app.services.matching_service:_run_fuzzy_matching:79 - Starting Fuzzy Matching phase
+2026-05-12 13:57:34 | INFO     | app.services.matching_service:_run_fuzzy_matching:120 - Fuzzy matching completed. Found 1 fuzzy matches.
+2026-05-12 13:57:34 | INFO     | app.services.ingestion_service:ingest_file:72 - Starting ingestion for file: C:\Users\satap\AppData\Local\Temp\pytest-of-satap\pytest-1\test_csv_ingestion0\test_data.csv [Source: internal]
+2026-05-12 13:57:34 | DEBUG    | app.services.ingestion_service:ingest_file:76 - Read 1 rows from C:\Users\satap\AppData\Local\Temp\pytest-of-satap\pytest-1\test_csv_ingestion0\test_data.csv
+2026-05-12 13:57:34 | INFO     | app.services.ingestion_service:ingest_file:87 - Successfully ingested 1 records from C:\Users\satap\AppData\Local\Temp\pytest-of-satap\pytest-1\test_csv_ingestion0\test_data.csv
+2026-05-12 13:57:34 | INFO     | app.services.ingestion_service:ingest_file:72 - Starting ingestion for file: C:\Users\satap\AppData\Local\Temp\pytest-of-satap\pytest-1\test_missing_columns0\bad_data.csv [Source: internal]
+2026-05-12 13:57:34 | DEBUG    | app.services.ingestion_service:ingest_file:76 - Read 1 rows from C:\Users\satap\AppData\Local\Temp\pytest-of-satap\pytest-1\test_missing_columns0\bad_data.csv
+2026-05-12 13:57:34 | ERROR    | app.services.ingestion_service:_validate_columns:37 - Missing required columns: merchant
+2026-05-12 13:58:37 | INFO     | app.db.database:<module>:10 - Connecting to database at postgresql://user:password@localhost/payment_reconciliation
+2026-05-12 13:58:37 | INFO     | app.db.database:<module>:28 - Database connection setup completed successfully.
+2026-05-12 13:58:37 | INFO     | main:startup_event:36 - Initializing application and setting up database tables...
+2026-05-12 13:58:41 | ERROR    | main:startup_event:41 - Error creating database tables: (psycopg2.OperationalError) connection to server at "localhost" (::1), port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-05-12 14:07:05 | INFO     | app.api.upload:upload_files:26 - Received request to upload transaction files
+2026-05-12 14:07:05 | INFO     | app.services.ingestion_service:ingest_file:72 - Starting ingestion for file: uploads/internal_temp_internal_transactions.csv [Source: internal]
+2026-05-12 14:07:05 | DEBUG    | app.services.ingestion_service:ingest_file:76 - Read 100 rows from uploads/internal_temp_internal_transactions.csv
+2026-05-12 14:07:05 | INFO     | app.services.ingestion_service:ingest_file:87 - Successfully ingested 100 records from uploads/internal_temp_internal_transactions.csv
+2026-05-12 14:07:05 | INFO     | app.services.ingestion_service:ingest_file:72 - Starting ingestion for file: uploads/bank_temp_bank_transactions.csv [Source: bank]
+2026-05-12 14:07:05 | DEBUG    | app.services.ingestion_service:ingest_file:76 - Read 102 rows from uploads/bank_temp_bank_transactions.csv
+2026-05-12 14:07:05 | INFO     | app.services.ingestion_service:ingest_file:87 - Successfully ingested 102 records from uploads/bank_temp_bank_transactions.csv
+2026-05-12 14:07:09 | ERROR    | app.api.upload:upload_files:66 - Upload failed: (psycopg2.OperationalError) connection to server at "localhost" (::1), port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-05-12 14:09:16 | INFO     | app.db.database:<module>:10 - Connecting to database at postgresql://user:password@localhost/payment_reconciliation
+2026-05-12 14:09:16 | INFO     | app.db.database:<module>:28 - Database connection setup completed successfully.
+2026-05-12 14:09:17 | INFO     | app.services.matching_service:reconcile:126 - Starting Reconciliation process
+2026-05-12 14:09:17 | INFO     | app.services.matching_service:_run_exact_matching:33 - Starting Exact Matching phase
+2026-05-12 14:09:17 | INFO     | app.services.matching_service:_run_exact_matching:72 - Exact matching completed. Found 1 exact matches.
+2026-05-12 14:09:17 | INFO     | app.services.matching_service:_run_fuzzy_matching:79 - Starting Fuzzy Matching phase
+2026-05-12 14:09:17 | INFO     | app.services.matching_service:_run_fuzzy_matching:120 - Fuzzy matching completed. Found 0 fuzzy matches.
+2026-05-12 14:09:17 | INFO     | app.services.matching_service:reconcile:126 - Starting Reconciliation process
+2026-05-12 14:09:17 | INFO     | app.services.matching_service:_run_exact_matching:33 - Starting Exact Matching phase
+2026-05-12 14:09:17 | INFO     | app.services.matching_service:_run_exact_matching:72 - Exact matching completed. Found 0 exact matches.
+2026-05-12 14:09:17 | INFO     | app.services.matching_service:_run_fuzzy_matching:79 - Starting Fuzzy Matching phase
+2026-05-12 14:09:17 | INFO     | app.services.matching_service:_run_fuzzy_matching:120 - Fuzzy matching completed. Found 1 fuzzy matches.
+2026-05-12 14:09:17 | INFO     | app.services.ingestion_service:ingest_file:80 - Starting ingestion for file: C:\Users\satap\AppData\Local\Temp\pytest-of-satap\pytest-2\test_csv_ingestion0\test_data.csv [Source: internal]
+2026-05-12 14:09:17 | DEBUG    | app.services.ingestion_service:_read_file:20 - Attempting to read file C:\Users\satap\AppData\Local\Temp\pytest-of-satap\pytest-2\test_csv_ingestion0\test_data.csv with extension .csv
+2026-05-12 14:09:17 | DEBUG    | app.services.ingestion_service:ingest_file:84 - Read 1 rows from C:\Users\satap\AppData\Local\Temp\pytest-of-satap\pytest-2\test_csv_ingestion0\test_data.csv
+2026-05-12 14:09:17 | DEBUG    | app.services.ingestion_service:_clean_data:48 - Dropped 0 rows due to missing critical columns
+2026-05-12 14:09:17 | INFO     | app.services.ingestion_service:ingest_file:95 - Successfully ingested 1 records from C:\Users\satap\AppData\Local\Temp\pytest-of-satap\pytest-2\test_csv_ingestion0\test_data.csv
+2026-05-12 14:09:17 | INFO     | app.services.ingestion_service:ingest_file:80 - Starting ingestion for file: C:\Users\satap\AppData\Local\Temp\pytest-of-satap\pytest-2\test_missing_columns0\bad_data.csv [Source: internal]
+2026-05-12 14:09:17 | DEBUG    | app.services.ingestion_service:_read_file:20 - Attempting to read file C:\Users\satap\AppData\Local\Temp\pytest-of-satap\pytest-2\test_missing_columns0\bad_data.csv with extension .csv
+2026-05-12 14:09:17 | DEBUG    | app.services.ingestion_service:ingest_file:84 - Read 1 rows from C:\Users\satap\AppData\Local\Temp\pytest-of-satap\pytest-2\test_missing_columns0\bad_data.csv
+2026-05-12 14:09:17 | ERROR    | app.services.ingestion_service:_validate_columns:39 - Missing required columns: merchant
+2026-05-12 14:09:57 | INFO     | app.db.database:<module>:10 - Connecting to database at postgresql://user:password@localhost/payment_reconciliation
+2026-05-12 14:09:57 | INFO     | app.db.database:<module>:28 - Database connection setup completed successfully.
+2026-05-12 14:09:58 | INFO     | main:startup_event:36 - Initializing application and setting up database tables...
+2026-05-12 14:10:02 | ERROR    | main:startup_event:41 - Error creating database tables: (psycopg2.OperationalError) connection to server at "localhost" (::1), port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-05-12 14:10:05 | INFO     | app.db.database:<module>:10 - Connecting to database at postgresql://user:password@localhost/payment_reconciliation
+2026-05-12 14:10:05 | INFO     | app.db.database:<module>:28 - Database connection setup completed successfully.
+2026-05-12 14:10:05 | INFO     | main:startup_event:36 - Initializing application and setting up database tables...
+2026-05-12 14:10:10 | ERROR    | main:startup_event:41 - Error creating database tables: (psycopg2.OperationalError) connection to server at "localhost" (::1), port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-05-12 14:10:24 | INFO     | app.api.upload:upload_files:26 - Received request to upload transaction files
+2026-05-12 14:10:24 | INFO     | app.services.ingestion_service:ingest_file:80 - Starting ingestion for file: uploads/internal_temp_internal_transactions.csv [Source: internal]
+2026-05-12 14:10:24 | DEBUG    | app.services.ingestion_service:_read_file:20 - Attempting to read file uploads/internal_temp_internal_transactions.csv with extension .csv
+2026-05-12 14:10:24 | DEBUG    | app.services.ingestion_service:ingest_file:84 - Read 100 rows from uploads/internal_temp_internal_transactions.csv
+2026-05-12 14:10:24 | DEBUG    | app.services.ingestion_service:_clean_data:48 - Dropped 0 rows due to missing critical columns
+2026-05-12 14:10:24 | INFO     | app.services.ingestion_service:ingest_file:95 - Successfully ingested 100 records from uploads/internal_temp_internal_transactions.csv
+2026-05-12 14:10:24 | INFO     | app.services.ingestion_service:ingest_file:80 - Starting ingestion for file: uploads/bank_temp_bank_transactions.csv [Source: bank]
+2026-05-12 14:10:24 | DEBUG    | app.services.ingestion_service:_read_file:20 - Attempting to read file uploads/bank_temp_bank_transactions.csv with extension .csv
+2026-05-12 14:10:24 | DEBUG    | app.services.ingestion_service:ingest_file:84 - Read 102 rows from uploads/bank_temp_bank_transactions.csv
+2026-05-12 14:10:24 | DEBUG    | app.services.ingestion_service:_clean_data:48 - Dropped 0 rows due to missing critical columns
+2026-05-12 14:10:24 | INFO     | app.services.ingestion_service:ingest_file:95 - Successfully ingested 102 records from uploads/bank_temp_bank_transactions.csv
+2026-05-12 14:10:28 | ERROR    | app.api.upload:upload_files:68 - Upload failed with unexpected error: (psycopg2.OperationalError) connection to server at "localhost" (::1), port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+Traceback (most recent call last):
+
+  File "C:\Users\satap\OneDrive\Desktop\Intern\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 146, in __init__
+    self._dbapi_connection = engine.raw_connection()
+    │                        │      └ <function Engine.raw_connection at 0x0000023B24F20EA0>
+    │                        └ Engine(postgresql://user:***@localhost/payment_reconciliation)
+    └ <sqlalchemy.engine.base.Connection object at 0x0000023B43E6FB50>
+  File "C:\Users\satap\OneDrive\Desktop\Intern\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 3302, in raw_connection
+    return self.pool.connect()
+           │    │    └ <function Pool.connect at 0x0000023B24ABAC00>
+           │    └ <sqlalchemy.pool.impl.QueuePool object at 0x0000023B23470190>
+           └ Engine(postgresql://user:***@localhost/payment_reconciliation)
+  File "C:\Users\satap\OneDrive\Desktop\Intern\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 449, in connect
+    return _ConnectionFairy._checkout(self)
+           │                │         └ <sqlalchemy.pool.impl.QueuePool object at 0x0000023B23470190>
+           │                └ <classmethod(<function _ConnectionFairy._checkout at 0x0000023B24AD8CC0>)>
+           └ <class 'sqlalchemy.pool.base._ConnectionFairy'>
+  File "C:\Users\satap\OneDrive\Desktop\Intern\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 1263, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+            │                 │        └ <sqlalchemy.pool.impl.QueuePool object at 0x0000023B23470190>
+            │                 └ <classmethod(<function _ConnectionRecord.checkout at 0x0000023B24ABB7E0>)>
+            └ <class 'sqlalchemy.pool.base._ConnectionRecord'>
+  File "C:\Users\satap\OneDrive\Desktop\Intern\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 712, in checkout
+    rec = pool._do_get()
+          │    └ <function QueuePool._do_get at 0x0000023B24AF0540>
+          └ <sqlalchemy.pool.impl.QueuePool object at 0x0000023B23470190>
+  File "C:\Users\satap\OneDrive\Desktop\Intern\venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 179, in _do_get
+    with util.safe_reraise():
+         │    └ <class 'sqlalchemy.util.langhelpers.safe_reraise'>
+         └ <module 'sqlalchemy.util' from 'C:\\Users\\satap\\OneDrive\\Desktop\\Intern\\venv\\Lib\\site-packages\\sqlalchemy\\util\\__in...
+  File "C:\Users\satap\OneDrive\Desktop\Intern\venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+          │         │              └ <traceback object at 0x0000023B45F1F080>
+          │         └ <method 'with_traceback' of 'BaseException' objects>
+          └ OperationalError('connection to server at "localhost" (::1), port 5432 failed: Connection refused (0x0000274D/10061)\n\tIs th...
+  File "C:\Users\satap\OneDrive\Desktop\Intern\venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 177, in _do_get
+    return self._create_connection()
+           │    └ <function Pool._create_connection at 0x0000023B24ABA980>
+           └ <sqlalchemy.pool.impl.QueuePool object at 0x0000023B23470190>
+  File "C:\Users\satap\OneDrive\Desktop\Intern\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 390, in _create_connection
+    return _ConnectionRecord(self)
+           │                 └ <sqlalchemy.pool.impl.QueuePool object at 0x0000023B23470190>
+           └ <class 'sqlalchemy.pool.base._ConnectionRecord'>
+  File "C:\Users\satap\OneDrive\Desktop\Intern\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 674, in __init__
+    self.__connect()
+    └ <sqlalchemy.pool.base._ConnectionRecord object at 0x0000023B45D43AF0>
+  File "C:\Users\satap\OneDrive\Desktop\Intern\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 900, in __connect
+    with util.safe_reraise():
+         │    └ <class 'sqlalchemy.util.langhelpers.safe_reraise'>
+         └ <module 'sqlalchemy.util' from 'C:\\Users\\satap\\OneDrive\\Desktop\\Intern\\venv\\Lib\\site-packages\\sqlalchemy\\util\\__in...
+  File "C:\Users\satap\OneDrive\Desktop\Intern\venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+          │         │              └ <traceback object at 0x0000023B45F1EDC0>
+          │         └ <method 'with_traceback' of 'BaseException' objects>
+          └ OperationalError('connection to server at "localhost" (::1), port 5432 failed: Connection refused (0x0000274D/10061)\n\tIs th...
+  File "C:\Users\satap\OneDrive\Desktop\Intern\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 896, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+    │    │                               │    │               └ <sqlalchemy.pool.base._ConnectionRecord object at 0x0000023B45D43AF0>
+    │    │                               │    └ <function create_engine.<locals>.connect at 0x0000023B2534D800>
+    │    │                               └ <sqlalchemy.pool.impl.QueuePool object at 0x0000023B23470190>
+    │    └ <member 'dbapi_connection' of '_ConnectionRecord' objects>
+    └ <sqlalchemy.pool.base._ConnectionRecord object at 0x0000023B45D43AF0>
+  File "C:\Users\satap\OneDrive\Desktop\Intern\venv\Lib\site-packages\sqlalchemy\engine\create.py", line 643, in connect
+    return dialect.connect(*cargs, **cparams)
+           │       │        │        └ {'host': 'localhost', 'dbname': 'payment_reconciliation', 'user': 'user', 'password': 'password'}
+           │       │        └ []
+           │       └ <function DefaultDialect.connect at 0x0000023B24FF4AE0>
+           └ <sqlalchemy.dialects.postgresql.psycopg2.PGDialect_psycopg2 object at 0x0000023B253A8710>
+  File "C:\Users\satap\OneDrive\Desktop\Intern\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 621, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)
+           │    │            │        │        └ {'host': 'localhost', 'dbname': 'payment_reconciliation', 'user': 'user', 'password': 'password'}
+           │    │            │        └ ()
+           │    │            └ <function connect at 0x0000023B254D62A0>
+           │    └ <module 'psycopg2' from 'C:\\Users\\satap\\OneDrive\\Desktop\\Intern\\venv\\Lib\\site-packages\\psycopg2\\__init__.py'>
+           └ <sqlalchemy.dialects.postgresql.psycopg2.PGDialect_psycopg2 object at 0x0000023B253A8710>
+  File "C:\Users\satap\OneDrive\Desktop\Intern\venv\Lib\site-packages\psycopg2\__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           │        │                       │                     └ {}
+           │        │                       └ None
+           │        └ 'host=localhost dbname=payment_reconciliation user=user password=password'
+           └ <built-in function _connect>
+
+psycopg2.OperationalError: connection to server at "localhost" (::1), port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+
+The above exception was the direct cause of the following exception:
+
+
+Traceback (most recent call last):
+
+  File "<string>", line 1, in <module>
+  File "C:\Users\satap\AppData\Local\Programs\Python\Python311\Lib\multiprocessing\spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+               │     │   └ 324
+               │     └ 3
+               └ <function _main at 0x0000023B202AB6A0>
+  File "C:\Users\satap\AppData\Local\Programs\Python\Python311\Lib\multiprocessing\spawn.py", line 135, in _main
+    return self._bootstrap(parent_sentinel)
+           │    │          └ 324
+           │    └ <function BaseProcess._bootstrap at 0x0000023B1FF8C0E0>
+           └ <SpawnProcess name='SpawnProcess-1' parent=270712 started>
+  File "C:\Users\satap\AppData\Local\Programs\Python\Python311\Lib\multiprocessing\process.py", line 314, in _bootstrap
+    self.run()
+    │    └ <function BaseProcess.run at 0x0000023B1FF83600>
+    └ <SpawnProcess name='SpawnProcess-1' parent=270712 started>
+  File "C:\Users\satap\AppData\Local\Programs\Python\Python311\Lib\multiprocessing\process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    │    │        │    │        │    └ {'config': <uvicorn.config.Config object at 0x0000023B20280450>, 'target': <bound method Server.run of <uvicorn.server.Server...
+    │    │        │    │        └ <SpawnProcess name='SpawnProcess-1' parent=270712 started>
+    │    │        │    └ ()
+    │    │        └ <SpawnProcess name='SpawnProcess-1' parent=270712 started>
+    │    └ <function subprocess_started at 0x0000023B226B37E0>
+    └ <SpawnProcess name='SpawnProcess-1' parent=270712 started>
+  File "C:\Users\satap\OneDrive\Desktop\Intern\venv\Lib\site-packages\uvicorn\_subprocess.py", line 80, in subprocess_started
+    target(sockets=sockets)
+    │              └ [<socket.socket fd=408, family=2, type=1, proto=6, laddr=('127.0.0.1', 8000)>]
+    └ <bound method Server.run of <uvicorn.server.Server object at 0x0000023B226F1390>>
+  File "C:\Users\satap\OneDrive\Desktop\Intern\venv\Lib\site-packages\uvicorn\server.py", line 65, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           │       │   │    │             └ [<socket.socket fd=408, family=2, type=1, proto=6, laddr=('127.0.0.1', 8000)>]
+           │       │   │    └ <function Server.serve at 0x0000023B226B2700>
+           │       │   └ <uvicorn.server.Server object at 0x0000023B226F1390>
+           │       └ <function run at 0x0000023B21F1F880>
+           └ <module 'asyncio' from 'C:\\Users\\satap\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\asyncio\\__init__.py'>
+  File "C:\Users\satap\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 190, in run
+    return runner.run(main)
+           │      │   └ <coroutine object Server.serve at 0x0000023B226C94E0>
+           │      └ <function Runner.run at 0x0000023B21F1FC40>
+           └ <asyncio.runners.Runner object at 0x0000023B226F0B90>
+  File "C:\Users\satap\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<Server.serve() running at C:\Users\satap\OneDrive\Desktop\Intern\venv\Lib\site-packages\uvi...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x0000023B21F1D760>
+           │    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x0000023B226F0B90>
+  File "C:\Users\satap\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 640, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x0000023B21F1D6C0>
+    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+  File "C:\Users\satap\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 607, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x0000023B21F1F4C0>
+    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+  File "C:\Users\satap\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 1922, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x0000023B21E54CC0>
+    └ <Handle Task.task_wakeup(<Future finis...023B45EBB950>>)>
+  File "C:\Users\satap\AppData\Local\Programs\Python\Python311\Lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle Task.task_wakeup(<Future finis...023B45EBB950>>)>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle Task.task_wakeup(<Future finis...023B45EBB950>>)>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle Task.task_wakeup(<Future finis...023B45EBB950>>)>
+  File "C:\Users\satap\OneDrive\Desktop\Intern\venv\Lib\site-packages\uvicorn\protocols\http\h11_impl.py", line 406, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+                   └ <uvicorn.middleware.proxy_headers.ProxyHeadersMiddleware object at 0x0000023B45D3A8D0>
+  File "C:\Users\satap\OneDrive\Desktop\Intern\venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 70, in __call__
+    return await self.app(scope, receive, send)
+                 │    │   │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x0000023B45E8AFD0>>
+                 │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x0000023B45E8A...
+                 │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+                 │    └ <fastapi.applications.FastAPI object at 0x0000023B45DFDA90>
+                 └ <uvicorn.middleware.proxy_headers.ProxyHeadersMiddleware object at 0x0000023B45D3A8D0>
+  File "C:\Users\satap\OneDrive\Desktop\Intern\venv\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+                           │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x0000023B45E8AFD0>>
+                           │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x0000023B45E8A...
+                           └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+  File "C:\Users\satap\OneDrive\Desktop\Intern\venv\Lib\site-packages\starlette\applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x0000023B45E8AFD0>>
+          │    │                │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x0000023B45E8A...
+          │    │                └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <starlette.middleware.errors.ServerErrorMiddleware object at 0x0000023B45DFEB10>
+          └ <fastapi.applications.FastAPI object at 0x0000023B45DFDA90>
+  File "C:\Users\satap\OneDrive\Desktop\Intern\venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+          │    │   │      │        └ <function ServerErrorMiddleware.__call__.<locals>._send at 0x0000023B2557C7C0>
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x0000023B45E8A...
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <starlette.middleware.cors.CORSMiddleware object at 0x0000023B24963C10>
+          └ <starlette.middleware.errors.ServerErrorMiddleware object at 0x0000023B45DFEB10>
+  File "C:\Users\satap\OneDrive\Desktop\Intern\venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+          │    │               │      │        │                     └ Headers({'host': '127.0.0.1:8000', 'connection': 'keep-alive', 'content-length': '11437', 'sec-ch-ua-platform': '"Windows"', ...
+          │    │               │      │        └ <function ServerErrorMiddleware.__call__.<locals>._send at 0x0000023B2557C7C0>
+          │    │               │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x0000023B45E8A...
+          │    │               └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <function CORSMiddleware.simple_response at 0x0000023B248BCAE0>
+          └ <starlette.middleware.cors.CORSMiddleware object at 0x0000023B24963C10>
+  File "C:\Users\satap\OneDrive\Desktop\Intern\venv\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+          │    │   │      │        └ functools.partial(<bound method CORSMiddleware.send of <starlette.middleware.cors.CORSMiddleware object at 0x0000023B24963C10...
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x0000023B45E8A...
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x0000023B43857950>
+          └ <starlette.middleware.cors.CORSMiddleware object at 0x0000023B24963C10>
+  File "C:\Users\satap\OneDrive\Desktop\Intern\venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+          │                            │    │    │     │      │        └ functools.partial(<bound method CORSMiddleware.send of <starlette.middleware.cors.CORSMiddleware object at 0x0000023B24963C10...
+          │                            │    │    │     │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x0000023B45E8A...
+          │                            │    │    │     └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │                            │    │    └ <starlette.requests.Request object at 0x0000023B45E8ADD0>
+          │                            │    └ <fastapi.routing.APIRouter object at 0x0000023B453C8310>
+          │                            └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x0000023B43857950>
+          └ <function wrap_app_handling_exceptions at 0x0000023B24803920>
+  File "C:\Users\satap\OneDrive\Desktop\Intern\venv\Lib\site-packages\starlette\_exception_handler.py", line 51, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x0000023B45DEE2A0>
+          │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x0000023B45E8A...
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          └ <fastapi.routing.APIRouter object at 0x0000023B453C8310>
+  File "C:\Users\satap\OneDrive\Desktop\Intern\venv\Lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x0000023B45DEE2A0>
+          │    │                │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x0000023B45E8A...
+          │    │                └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <bound method Router.app of <fastapi.routing.APIRouter object at 0x0000023B453C8310>>
+          └ <fastapi.routing.APIRouter object at 0x0000023B453C8310>
+  File "C:\Users\satap\OneDrive\Desktop\Intern\venv\Lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+          │     │      │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x0000023B45DEE2A0>
+          │     │      │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x0000023B45E8A...
+          │     │      └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │     └ <function Route.handle at 0x0000023B24844FE0>
+          └ APIRoute(path='/api/v1/upload', name='upload_files', methods=['POST'])
+  File "C:\Users\satap\OneDrive\Desktop\Intern\venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x0000023B45DEE2A0>
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x0000023B45E8A...
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <function request_response.<locals>.app at 0x0000023B45DEDDA0>
+          └ APIRoute(path='/api/v1/upload', name='upload_files', methods=['POST'])
+  File "C:\Users\satap\OneDrive\Desktop\Intern\venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+          │                            │    │        │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x0000023B45DEE2A0>
+          │                            │    │        │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x0000023B45E8A...
+          │                            │    │        └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │                            │    └ <starlette.requests.Request object at 0x0000023B45E8AB90>
+          │                            └ <function request_response.<locals>.app.<locals>.app at 0x0000023B45DEE160>
+          └ <function wrap_app_handling_exceptions at 0x0000023B24803920>
+  File "C:\Users\satap\OneDrive\Desktop\Intern\venv\Lib\site-packages\starlette\_exception_handler.py", line 51, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x0000023B45E807C0>
+          │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x0000023B45E8A...
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          └ <function request_response.<locals>.app.<locals>.app at 0x0000023B45DEE160>
+  File "C:\Users\satap\OneDrive\Desktop\Intern\venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+                     │ └ <starlette.requests.Request object at 0x0000023B45E8AB90>
+                     └ <function get_request_handler.<locals>.app at 0x0000023B45DEDE40>
+  File "C:\Users\satap\OneDrive\Desktop\Intern\venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                         └ <function run_endpoint_function at 0x0000023B24844AE0>
+  File "C:\Users\satap\OneDrive\Desktop\Intern\venv\Lib\site-packages\fastapi\routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+                 │         │      └ {'db': <sqlalchemy.orm.session.Session object at 0x0000023B45EBB950>, 'internal_file': UploadFile(filename='internal_transact...
+                 │         └ <function upload_files at 0x0000023B255A4860>
+                 └ Dependant(path_params=[], query_params=[], header_params=[], cookie_params=[], body_params=[ModelField(field_info=File(Pydant...
+
+> File "C:\Users\satap\OneDrive\Desktop\Intern\app\api\upload.py", line 47, in upload_files
+    db.query(Transaction).delete()
+    │  │     └ <class 'app.db.models.Transaction'>
+    │  └ <function Session.query at 0x0000023B252B36A0>
+    └ <sqlalchemy.orm.session.Session object at 0x0000023B45EBB950>
+
+  File "C:\Users\satap\OneDrive\Desktop\Intern\venv\Lib\site-packages\sqlalchemy\orm\query.py", line 3162, in delete
+    result: CursorResult[Any] = self.session.execute(
+                         │      │    │       └ <function Session.execute at 0x0000023B252B2520>
+                         │      │    └ <sqlalchemy.orm.session.Session object at 0x0000023B45EBB950>
+                         │      └ <sqlalchemy.orm.query.Query object at 0x0000023B45E107D0>
+                         └ typing.Any
+  File "C:\Users\satap\OneDrive\Desktop\Intern\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2362, in execute
+    return self._execute_internal(
+           │    └ <function Session._execute_internal at 0x0000023B252B2200>
+           └ <sqlalchemy.orm.session.Session object at 0x0000023B45EBB950>
+  File "C:\Users\satap\OneDrive\Desktop\Intern\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2237, in _execute_internal
+    conn = self._connection_for_bind(bind)
+           │    │                    └ Engine(postgresql://user:***@localhost/payment_reconciliation)
+           │    └ <function Session._connection_for_bind at 0x0000023B252B1F80>
+           └ <sqlalchemy.orm.session.Session object at 0x0000023B45EBB950>
+  File "C:\Users\satap\OneDrive\Desktop\Intern\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2106, in _connection_for_bind
+    return trans._connection_for_bind(engine, execution_options)
+           │     │                    │       └ None
+           │     │                    └ Engine(postgresql://user:***@localhost/payment_reconciliation)
+           │     └ <function SessionTransaction._connection_for_bind at 0x0000023B252B0A40>
+           └ <sqlalchemy.orm.session.SessionTransaction object at 0x0000023B45F133E0>
+  File "<string>", line 2, in _connection_for_bind
+  File "C:\Users\satap\OneDrive\Desktop\Intern\venv\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+                │  │      │      └ {}
+                │  │      └ (Engine(postgresql://user:***@localhost/payment_reconciliation), None)
+                │  └ <sqlalchemy.orm.session.SessionTransaction object at 0x0000023B45F133E0>
+                └ <function SessionTransaction._connection_for_bind at 0x0000023B252B0860>
+  File "C:\Users\satap\OneDrive\Desktop\Intern\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 1189, in _connection_for_bind
+    conn = bind.connect()
+           │    └ <function Engine.connect at 0x0000023B24F20E00>
+           └ Engine(postgresql://user:***@localhost/payment_reconciliation)
+  File "C:\Users\satap\OneDrive\Desktop\Intern\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 3278, in connect
+    return self._connection_cls(self)
+           │    │               └ Engine(postgresql://user:***@localhost/payment_reconciliation)
+           │    └ <class 'sqlalchemy.engine.base.Connection'>
+           └ Engine(postgresql://user:***@localhost/payment_reconciliation)
+  File "C:\Users\satap\OneDrive\Desktop\Intern\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 148, in __init__
+    Connection._handle_dbapi_exception_noconnection(
+    │          └ <classmethod(<function Connection._handle_dbapi_exception_noconnection at 0x0000023B24F1E660>)>
+    └ <class 'sqlalchemy.engine.base.Connection'>
+  File "C:\Users\satap\OneDrive\Desktop\Intern\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2442, in _handle_dbapi_exception_noconnection
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+          │                    │              │                 └ OperationalError('connection to server at "localhost" (::1), port 5432 failed: Connection refused (0x0000274D/10061)\n\tIs th...
+          │                    │              └ (<class 'psycopg2.OperationalError'>, OperationalError('connection to server at "localhost" (::1), port 5432 failed: Connecti...
+          │                    └ <method 'with_traceback' of 'BaseException' objects>
+          └ OperationalError('(psycopg2.OperationalError) connection to server at "localhost" (::1), port 5432 failed: Connection refused...
+  File "C:\Users\satap\OneDrive\Desktop\Intern\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 146, in __init__
+    self._dbapi_connection = engine.raw_connection()
+    │                        │      └ <function Engine.raw_connection at 0x0000023B24F20EA0>
+    │                        └ Engine(postgresql://user:***@localhost/payment_reconciliation)
+    └ <sqlalchemy.engine.base.Connection object at 0x0000023B43E6FB50>
+  File "C:\Users\satap\OneDrive\Desktop\Intern\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 3302, in raw_connection
+    return self.pool.connect()
+           │    │    └ <function Pool.connect at 0x0000023B24ABAC00>
+           │    └ <sqlalchemy.pool.impl.QueuePool object at 0x0000023B23470190>
+           └ Engine(postgresql://user:***@localhost/payment_reconciliation)
+  File "C:\Users\satap\OneDrive\Desktop\Intern\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 449, in connect
+    return _ConnectionFairy._checkout(self)
+           │                │         └ <sqlalchemy.pool.impl.QueuePool object at 0x0000023B23470190>
+           │                └ <classmethod(<function _ConnectionFairy._checkout at 0x0000023B24AD8CC0>)>
+           └ <class 'sqlalchemy.pool.base._ConnectionFairy'>
+  File "C:\Users\satap\OneDrive\Desktop\Intern\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 1263, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+            │                 │        └ <sqlalchemy.pool.impl.QueuePool object at 0x0000023B23470190>
+            │                 └ <classmethod(<function _ConnectionRecord.checkout at 0x0000023B24ABB7E0>)>
+            └ <class 'sqlalchemy.pool.base._ConnectionRecord'>
+  File "C:\Users\satap\OneDrive\Desktop\Intern\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 712, in checkout
+    rec = pool._do_get()
+          │    └ <function QueuePool._do_get at 0x0000023B24AF0540>
+          └ <sqlalchemy.pool.impl.QueuePool object at 0x0000023B23470190>
+  File "C:\Users\satap\OneDrive\Desktop\Intern\venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 179, in _do_get
+    with util.safe_reraise():
+         │    └ <class 'sqlalchemy.util.langhelpers.safe_reraise'>
+         └ <module 'sqlalchemy.util' from 'C:\\Users\\satap\\OneDrive\\Desktop\\Intern\\venv\\Lib\\site-packages\\sqlalchemy\\util\\__in...
+  File "C:\Users\satap\OneDrive\Desktop\Intern\venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+          │         │              └ <traceback object at 0x0000023B45F1F080>
+          │         └ <method 'with_traceback' of 'BaseException' objects>
+          └ OperationalError('connection to server at "localhost" (::1), port 5432 failed: Connection refused (0x0000274D/10061)\n\tIs th...
+  File "C:\Users\satap\OneDrive\Desktop\Intern\venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 177, in _do_get
+    return self._create_connection()
+           │    └ <function Pool._create_connection at 0x0000023B24ABA980>
+           └ <sqlalchemy.pool.impl.QueuePool object at 0x0000023B23470190>
+  File "C:\Users\satap\OneDrive\Desktop\Intern\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 390, in _create_connection
+    return _ConnectionRecord(self)
+           │                 └ <sqlalchemy.pool.impl.QueuePool object at 0x0000023B23470190>
+           └ <class 'sqlalchemy.pool.base._ConnectionRecord'>
+  File "C:\Users\satap\OneDrive\Desktop\Intern\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 674, in __init__
+    self.__connect()
+    └ <sqlalchemy.pool.base._ConnectionRecord object at 0x0000023B45D43AF0>
+  File "C:\Users\satap\OneDrive\Desktop\Intern\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 900, in __connect
+    with util.safe_reraise():
+         │    └ <class 'sqlalchemy.util.langhelpers.safe_reraise'>
+         └ <module 'sqlalchemy.util' from 'C:\\Users\\satap\\OneDrive\\Desktop\\Intern\\venv\\Lib\\site-packages\\sqlalchemy\\util\\__in...
+  File "C:\Users\satap\OneDrive\Desktop\Intern\venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+          │         │              └ <traceback object at 0x0000023B45F1EDC0>
+          │         └ <method 'with_traceback' of 'BaseException' objects>
+          └ OperationalError('connection to server at "localhost" (::1), port 5432 failed: Connection refused (0x0000274D/10061)\n\tIs th...
+  File "C:\Users\satap\OneDrive\Desktop\Intern\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 896, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+    │    │                               │    │               └ <sqlalchemy.pool.base._ConnectionRecord object at 0x0000023B45D43AF0>
+    │    │                               │    └ <function create_engine.<locals>.connect at 0x0000023B2534D800>
+    │    │                               └ <sqlalchemy.pool.impl.QueuePool object at 0x0000023B23470190>
+    │    └ <member 'dbapi_connection' of '_ConnectionRecord' objects>
+    └ <sqlalchemy.pool.base._ConnectionRecord object at 0x0000023B45D43AF0>
+  File "C:\Users\satap\OneDrive\Desktop\Intern\venv\Lib\site-packages\sqlalchemy\engine\create.py", line 643, in connect
+    return dialect.connect(*cargs, **cparams)
+           │       │        │        └ {'host': 'localhost', 'dbname': 'payment_reconciliation', 'user': 'user', 'password': 'password'}
+           │       │        └ []
+           │       └ <function DefaultDialect.connect at 0x0000023B24FF4AE0>
+           └ <sqlalchemy.dialects.postgresql.psycopg2.PGDialect_psycopg2 object at 0x0000023B253A8710>
+  File "C:\Users\satap\OneDrive\Desktop\Intern\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 621, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)
+           │    │            │        │        └ {'host': 'localhost', 'dbname': 'payment_reconciliation', 'user': 'user', 'password': 'password'}
+           │    │            │        └ ()
+           │    │            └ <function connect at 0x0000023B254D62A0>
+           │    └ <module 'psycopg2' from 'C:\\Users\\satap\\OneDrive\\Desktop\\Intern\\venv\\Lib\\site-packages\\psycopg2\\__init__.py'>
+           └ <sqlalchemy.dialects.postgresql.psycopg2.PGDialect_psycopg2 object at 0x0000023B253A8710>
+  File "C:\Users\satap\OneDrive\Desktop\Intern\venv\Lib\site-packages\psycopg2\__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           │        │                       │                     └ {}
+           │        │                       └ None
+           │        └ 'host=localhost dbname=payment_reconciliation user=user password=password'
+           └ <built-in function _connect>
+
+sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) connection to server at "localhost" (::1), port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-05-12 14:11:45 | INFO     | app.db.database:<module>:10 - Connecting to database at sqlite:///./sql_app.db
+2026-05-12 14:11:45 | INFO     | app.db.database:<module>:28 - Database connection setup completed successfully.
+2026-05-12 14:11:46 | INFO     | main:startup_event:36 - Initializing application and setting up database tables...
+2026-05-12 14:11:46 | INFO     | main:startup_event:39 - Database tables verified/created successfully.
+2026-05-12 14:11:57 | INFO     | app.api.upload:upload_files:26 - Received request to upload transaction files
+2026-05-12 14:11:57 | INFO     | app.services.ingestion_service:ingest_file:80 - Starting ingestion for file: uploads/internal_temp_internal_transactions.csv [Source: internal]
+2026-05-12 14:11:57 | DEBUG    | app.services.ingestion_service:_read_file:20 - Attempting to read file uploads/internal_temp_internal_transactions.csv with extension .csv
+2026-05-12 14:11:57 | DEBUG    | app.services.ingestion_service:ingest_file:84 - Read 100 rows from uploads/internal_temp_internal_transactions.csv
+2026-05-12 14:11:57 | DEBUG    | app.services.ingestion_service:_clean_data:48 - Dropped 0 rows due to missing critical columns
+2026-05-12 14:11:57 | INFO     | app.services.ingestion_service:ingest_file:95 - Successfully ingested 100 records from uploads/internal_temp_internal_transactions.csv
+2026-05-12 14:11:57 | INFO     | app.services.ingestion_service:ingest_file:80 - Starting ingestion for file: uploads/bank_temp_bank_transactions.csv [Source: bank]
+2026-05-12 14:11:57 | DEBUG    | app.services.ingestion_service:_read_file:20 - Attempting to read file uploads/bank_temp_bank_transactions.csv with extension .csv
+2026-05-12 14:11:57 | DEBUG    | app.services.ingestion_service:ingest_file:84 - Read 102 rows from uploads/bank_temp_bank_transactions.csv
+2026-05-12 14:11:57 | DEBUG    | app.services.ingestion_service:_clean_data:48 - Dropped 0 rows due to missing critical columns
+2026-05-12 14:11:57 | INFO     | app.services.ingestion_service:ingest_file:95 - Successfully ingested 102 records from uploads/bank_temp_bank_transactions.csv
+2026-05-12 14:11:57 | INFO     | app.api.upload:upload_files:56 - Successfully processed 100 internal and 102 bank records.
+2026-05-12 14:12:48 | INFO     | app.api.reconcile:run_reconciliation:19 - Received request to run reconciliation
+2026-05-12 14:12:48 | INFO     | app.services.matching_service:reconcile:126 - Starting Reconciliation process
+2026-05-12 14:12:48 | INFO     | app.services.matching_service:_run_exact_matching:33 - Starting Exact Matching phase
+2026-05-12 14:12:48 | INFO     | app.services.matching_service:_run_exact_matching:72 - Exact matching completed. Found 88 exact matches.
+2026-05-12 14:12:48 | INFO     | app.services.matching_service:_run_fuzzy_matching:79 - Starting Fuzzy Matching phase
+2026-05-12 14:12:48 | INFO     | app.services.matching_service:_run_fuzzy_matching:120 - Fuzzy matching completed. Found 3 fuzzy matches.
+2026-05-12 14:12:48 | INFO     | app.services.exception_service:detect_exceptions:18 - Starting exception detection
+2026-05-12 14:12:49 | INFO     | app.services.exception_service:detect_exceptions:88 - Detected 29 exceptions
+2026-05-12 14:12:49 | INFO     | app.api.reconcile:run_reconciliation:61 - Reconciliation completed successfully.
+2026-05-12 14:15:20 | INFO     | app.api.export:export_report:19 - Request received to export report
+2026-05-12 14:15:20 | INFO     | app.services.report_service:generate_excel_report:19 - Generating Excel report
+2026-05-12 14:15:21 | INFO     | app.services.report_service:generate_excel_report:67 - Excel report generated successfully
+2026-05-12 14:21:45 | INFO     | app.db.database:<module>:10 - Connecting to database at sqlite:///./sql_app.db
+2026-05-12 14:21:45 | INFO     | app.db.database:<module>:28 - Database connection setup completed successfully.
+2026-05-12 14:21:46 | INFO     | main:startup_event:36 - Initializing application and setting up database tables...
+2026-05-12 14:21:46 | INFO     | main:startup_event:39 - Database tables verified/created successfully.
