@@ -1,26 +1,26 @@
-# 🏦 Payment Reconciliation Platform
+#  Payment Reconciliation Platform
 
 A production-grade, full-stack Fintech application built to automate and streamline the process of reconciling internal ledger transactions against external bank statements. It features a robust Python backend powered by **FastAPI** and **pandas**, and an interactive, data-rich frontend built with **Streamlit**.
 
-## 🌟 Key Features
+##  Key Features
 
 - **Automated Ingestion**: Seamlessly upload and parse `.csv` and `.xlsx` transaction files.
 - **Advanced Matching Engine**:
   - **Exact Matching**: Matches transactions on ID, timestamp (±5 mins tolerance), and amount (±$0.01 tolerance).
   - **Fuzzy Matching**: Uses `rapidfuzz` to catch mangled transaction IDs when times and amounts still align perfectly.
 - **Exception Detection**: Automatically identifies edge-cases and discrepancies:
-  - 🚨 Missing Transactions (Unmatched records)
-  - 🚨 Duplicate Transactions
-  - 🚨 Amount Mismatches
-  - 🚨 Delayed Settlements
-  - 🚨 Refund Status Mismatches
+  -  Missing Transactions (Unmatched records)
+  -  Duplicate Transactions
+  -  Amount Mismatches
+  -  Delayed Settlements
+  -  Refund Status Mismatches
 - **Interactive Analytics Dashboard**: Beautiful, real-time KPI metrics and Plotly charts (Donut, Bar) displaying match rates and exception breakdowns.
 - **Exporting & Reporting**: Automatically generate and download comprehensive multi-sheet Excel reports detailing exact matches, fuzzy matches, unmatched records, and exceptions.
 - **Robust Architecture**: Built with SQLAlchemy ORM, Pydantic validation, centralized Loguru logging, and Clean Architecture principles.
 
 ---
 
-## 🛠️ Technology Stack
+##  Technology Stack
 
 - **Backend**: Python, FastAPI, Uvicorn
 - **Data Processing**: Pandas, NumPy, RapidFuzz
@@ -30,7 +30,7 @@ A production-grade, full-stack Fintech application built to automate and streaml
 
 ---
 
-## 📂 Project Structure
+##  Project Structure
 
 ```text
 payment-reconciliation-tool/
@@ -54,7 +54,7 @@ payment-reconciliation-tool/
 
 ---
 
-## 🚀 Getting Started
+##  Getting Started
 
 ### 1. Prerequisites
 Ensure you have Python 3.9+ installed on your system.
@@ -79,7 +79,7 @@ DATABASE_URL=postgresql://user:password@localhost/payment_reconciliation
 
 ---
 
-## 🏃‍♂️ Running the Application
+##  Running the Application
 
 This platform requires both the Backend API and Frontend Dashboard to be running simultaneously.
 
@@ -109,7 +109,7 @@ pytest tests/
 
 ---
 
-## 📖 How to Use the Platform
+##  How to Use the Platform
 
 1. **Upload Data**: Navigate to the **Upload** page on the sidebar. Upload the sample files located in the `data/` folder (`internal_transactions.csv` and `bank_transactions.csv`).
 2. **Reconcile**: Go to the **Dashboard** page and click **"Run Matching Engine"**. The system will crunch the numbers and instantly display your match rates and metrics.
